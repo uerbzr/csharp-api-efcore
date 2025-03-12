@@ -32,15 +32,18 @@ namespace workshop.wwwapi.Repository
         {
             _table.Attach(entity);
             _db.Entry(entity).State = EntityState.Modified;
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             return entity;
         }
 
         public async Task<T> Delete(object id)
         {
             T entity = await _table.FindAsync(id);
-            _table.Remove(entity);
-            await _db.SaveChangesAsync();
+            if (entity != null)
+            {
+                _table.Remove(entity);
+                await _db.SaveChangesAsync();
+            }
             return entity;
         }
 
