@@ -1,1 +1,3 @@
-# csharp-api-dapper
+# C# Calculator API Example
+
+Injected calculator service into API Sample
